@@ -81,7 +81,7 @@ class Record(AbstractRecord):
             raise ValueError
 
     def __str__(self):
-        return f"Contact name: {self.name}, phones: {'; '.join(p.value for p in self.phones)}, birthday: {self.birthday}"    
+        return f'Contact name: {self.name}, phones: {"; ".join(p.value for p in self.phones)}, birthday: {self.birthday}'    
 
 class AddressBook(UserDict):
     def add_record(self, record):
@@ -95,7 +95,7 @@ class AddressBook(UserDict):
     def find_birthday(self, name):
         for names, record in self.data.items():
             if name in names:
-                return f"Contact name:{name}, birthday: {record.birthday.value.strftime("%d.%m.%Y")}"
+                return f'Contact name:{name}, birthday: {record.birthday.value.strftime("%d.%m.%Y")}'
 
     def delete(self, name):
         self.data.pop(name)
@@ -120,7 +120,7 @@ class AddressBook(UserDict):
                     elif difference_day == 6:
                         birthdays.append({"name": name, "birthday":(date_user + dt.timedelta(days = -1)).strftime("%d.%m.%Y")})
         for birthday in birthdays:
-            print(f"{birthday.get("name")}, {birthday.get("birthday")}")
+            print(f"{birthday.get('name')}, {birthday.get('birthday')}")
         if not len(birthdays):
             print("Ther are no upcoming birthdays.")
         return "birthdays"
@@ -261,5 +261,5 @@ def save_data(book, filename="addressbook.pkl"):
 
 if __name__ == "__main__":
     
-    main(debug=False, host='0.0.0.0')
+    main()
     
